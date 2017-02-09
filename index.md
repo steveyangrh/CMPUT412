@@ -1,29 +1,12 @@
-## Welcome to GitHub Pages
+## Team CupCake
 
-You can use the [editor on GitHub](https://github.com/steveyangrh/CMPUT412/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+The Wanderbot script's main goal was to be coded to handle both fast linear velocity and fast turning. To optimize the speed while making sure we avoid the risk of colliding with other objects, we need to look into handling with camera and acceleration parameters. Knowing the weaknesses of the Laserscan, we know we need to make sharp fast turns to make our robot avoid pursuers
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Algorithm
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+The algorithm for our robot was the simplest part, most of the work came from fine-tuning the topics to go fast and not hit things. Our Algorithm would simply check if an object is within a certain distance (usually a number around less than a meter), if there was it would turn and if there wasn't it would go forward. On Top of that we added a small function that would make sure it would turn “randomly” left or right instead of always turning the same direction
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
