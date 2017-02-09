@@ -54,4 +54,6 @@ The options for this algorithm were how many previous points to store, and the w
 We had some good ideas for a simple yet effective tracking improvement which based its decisions on not only what it was seeing but what it had seen. In retrospect, however, there was an error in the calculation which may have greatly degraded its actual performance with fast moving targets. If we were to do it again, we would probably use a similar approach, but account for our mistake.
 
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```markdown
+Team Members: Alex Sampley, Thomas Curnow, Ronghao Yang
+```
