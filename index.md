@@ -2,7 +2,7 @@
 
 The Wanderbot script's main goal was to be coded to handle both fast linear velocity and fast turning. To optimize the speed while making sure we avoid the risk of colliding with other objects, we need to look into handling with camera and acceleration parameters. Knowing the weaknesses of the Laserscan, we know we need to make sharp fast turns to make our robot avoid pursuers
 
-#### Wanderbot
+# Wanderbot
 
 ### Algorithm
 
