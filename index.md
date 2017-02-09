@@ -20,6 +20,7 @@ Due to the limitations of the camera and the camera’s position on the robot, t
 ### Conclusion
 In the end, our competitors didn’t go with laserscan so our solution was no longer fine tuned to our estimation of their strategies. Both opponents went with tracking with visual tracking code instead of laserscan distance finding like we used. This still worked out in our favour because the sharp/fast turns we used to lose the laserscan also ended up losing the visual tracking algorithms very we put against. Against one robot, after the first turn our robot consistently lost the tracking of the opponent and won. Against the other bot, both “runs” our bot did a sharp turn near the opponent bot and then we got in the “blind spot” for the opponents camera, causing the opponent to not see us and go forward “ramming” us, giving us the point. This was an unintentional behaviour, but with how we tuned our bot to avoid obstacles, it makes sense. In the end I think our wanderbot was a great success in regards to the competition. If we had more time, the next thing we would probably look at would be making the bot move more “random” instead of its common behaviour of moving around the perimeter of the room.
 
+# Followbot
 
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
