@@ -22,8 +22,8 @@ In the end, our competitors didn’t go with laserscan so our solution was no lo
 
 # Followbot
 
-### Movement
-#### What we did
+## Movement
+### What we did
 The movement was fairly simple, and we did not do much to modify it. We started off with the laserscan followbot uses a PD controller to follow a point in 3D space. This itself is pretty straight forward, and required only some tinkering with variables to set the maximum and minimum distance for a point, and more importantly, to set the distance that we would follow at. We chose to go very close to the bot, about 0.8m, which is close to the minimum usable range of the depth camera. In practice, this worked pretty well, and we could usually retreat from a turtlebot if they were coming too close to see. However, if the turtlebot was quick enough, it could rush inside of our visible range and we would lose it.
 
 Extensions
