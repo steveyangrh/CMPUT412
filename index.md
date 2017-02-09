@@ -27,29 +27,30 @@ In the end, our competitors didn’t go with laserscan so our solution was no lo
 ### What we did
 The movement was fairly simple, and we did not do much to modify it. We started off with the laserscan followbot uses a PD controller to follow a point in 3D space. This itself is pretty straight forward, and required only some tinkering with variables to set the maximum and minimum distance for a point, and more importantly, to set the distance that we would follow at. We chose to go very close to the bot, about 0.8m, which is close to the minimum usable range of the depth camera. In practice, this worked pretty well, and we could usually retreat from a turtlebot if they were coming too close to see. However, if the turtlebot was quick enough, it could rush inside of our visible range and we would lose it.
 
-Extensions
+### Extensions
 An obvious extension would be obstacle avoidance. If the opposing turtlebot moved to close to an obstacle, we ran the risk of running into it in a blind chasing of them. In practice, however, we found most bots did not travel close enough to obstacles to pose a risk.
 Another possible extension would be to modify the PD controller to try to put us in the same position and heading of the opposing bot once they left, to essentially follow in their footsteps. This could be done by measuring both the position and velocity of the turtlebot, and keeping a buffer of states to strive towards. This, however, seemed like quite an undertaking, so we focussed more on the targeting aspect for improvements (see next section).
 
-### Targeting
-What we did 
+## Targeting
+
+### What we did 
 We started off with the laserscan followbot’s point publisher, which took a laserscan and found a nearby point to follow. Initially this picked the nearest point, which was a good start, but we wanted to have a bit of memory, so we would pick a point near the last point we were following. In this way, we hoped to keep track of a single object consistently.
 The way we ended up implementing this was with a list of previous points collected, each of which contributed to the picking of a new point. As each point got older, it’s contribution to picking the new point faded. When a new point was picked, it would have its distance compared to each previous point in our cache, to determine if it was a suitable continuation of our previously followed points.
 
-Performance
+### Performance
 It seemed to perform quite well on slow moving objects, and seemingly better than the original, but this is all just based on observation. When moving faster, it was okay until the object it was tracking approached a wall.
 
-Mistakes and Fixes
+### Mistakes and Fixes
 When we wrote the code to weight each point according to the previous points, we kept all the points in the reference frame of the robot. This means as the robot moved, the points would move with it through the world space, making a fast moving robot move these points substantially before they were too old. The fix would be to use the odometry of the robot to transform each old point based on the new position, making them more accurate. This could possibly fix the problem where we would latch onto a wall after moving quickly towards it, because the turtlebot would be projecting its previous points onto the wall, rather than its target.
 
-Specifics
+### Specifics
 When picking a point, rather than just taking the minimum distance, we would take the minimum of the distance plus a heuristic, defined by the previous points. The heuristic was defined as a sum of weighted distances from the new candidate point. The weight decreased as the point got older, leaving newer points as more influential, as older points contributed less but not nothing, to counter some noise in measurements. The exact equation would be 
 h(x,{x0,x1,...,xn}) = i=0ni(x-xi)2
 where x is the candidate point, xi is a previous point, with x0 being the newest point, and xn being the oldest point. Gamma is a weighting factor, which is between 0 and 1. A maximum number of points was set, so this operation is done in constant time based on runtime of the algorithm.
 
 The options for this algorithm were how many previous points to store, and the weighting factor. A larger weighting factor meant older points were more influential, while a smaller one put more weight on the newer points. The number of points stored changed how long a point was used to influence point selection, but mostly existed to make the calculation constant time, since the weighting factor would also decrease the influence of the point exponentially.
 
-### Conclusions
+## Conclusions
 We had some good ideas for a simple yet effective tracking improvement which based its decisions on not only what it was seeing but what it had seen. In retrospect, however, there was an error in the calculation which may have greatly degraded its actual performance with fast moving targets. If we were to do it again, we would probably use a similar approach, but account for our mistake.
 
 
