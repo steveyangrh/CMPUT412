@@ -1,5 +1,8 @@
 ## Team CupCake
 
+```markdown
+Team Members: Alex Sampley, Thomas Curnow, Ronghao Yang
+```
 The Wanderbot script's main goal was to be coded to handle both fast linear velocity and fast turning. To optimize the speed while making sure we avoid the risk of colliding with other objects, we need to look into handling with camera and acceleration parameters. Knowing the weaknesses of the Laserscan, we know we need to make sharp fast turns to make our robot avoid pursuers
 
 # Wanderbot
@@ -54,6 +57,3 @@ The options for this algorithm were how many previous points to store, and the w
 We had some good ideas for a simple yet effective tracking improvement which based its decisions on not only what it was seeing but what it had seen. In retrospect, however, there was an error in the calculation which may have greatly degraded its actual performance with fast moving targets. If we were to do it again, we would probably use a similar approach, but account for our mistake.
 
 
-```markdown
-Team Members: Alex Sampley, Thomas Curnow, Ronghao Yang
-```
